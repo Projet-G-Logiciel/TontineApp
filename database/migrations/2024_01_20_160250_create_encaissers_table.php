@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('encaissers', function (Blueprint $table) {
             $table->id();
-            $table->montant();
+            $table->integer('montant');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
