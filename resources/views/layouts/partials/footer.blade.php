@@ -7,4 +7,4 @@
         <p class="mb-0 text-600">v1.1.0</p>
         </div>
     </div>
-    </footer>
+</footer>

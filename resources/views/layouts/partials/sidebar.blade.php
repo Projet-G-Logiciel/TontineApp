@@ -8,23 +8,49 @@
                     <!-- label-->
                     <hr class="navbar-vertical-line"><!-- parent pages-->
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="documentation/getting-started.html" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <span class="nav-link-text">Getting started</span>
+                                <span class="nav-link-text"><br></span>
+                            </div>
+                    </div><!-- parent pages-->
+                    <div class="nav-item-wrapper">
+                        <a class="nav-link label-1" href="{{ route('dashboard') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <span><img src="{{ asset('assets/img/icons/dashboard.png') }}" alt="" width="15" height="15" style="margin-right: 7px"></span><span class="nav-link-text">Dashboard</span>
                             </div>
                         </a>
                     </div><!-- parent pages--> 
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="documentation/getting-started.html" role="button" data-bs-toggle="" aria-expanded="false">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <span class="nav-link-text">Getting started</span>
+                                <span><img src="{{ asset('assets/img/icons/seance.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Seance</span>
                             </div>
                         </a>
                     </div><!-- parent pages-->
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="documentation/getting-started.html" role="button" data-bs-toggle="" aria-expanded="false">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <span class="nav-link-text">Getting started</span>
+                                <span><img src="{{ asset('assets/img/icons/membres.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Listes des membres</span>
+                            </div>
+                        </a>
+                    </div><!-- parent pages-->
+                    <div class="nav-item-wrapper">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <span><img src="{{ asset('assets/img/icons/emprunt.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Emprunts</span>
+                            </div>
+                        </a>
+                    </div><!-- parent pages-->
+                    <div class="nav-item-wrapper">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <span><img src="{{ asset('assets/img/icons/malheur.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Malheurs</span>
+                            </div>
+                        </a>
+                    </div><!-- parent pages-->
+                    <div class="nav-item-wrapper">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <span><img src="{{ asset('assets/img/icons/remboursement.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Remboursements</span>
                             </div>
                         </a>
                     </div><!-- parent pages-->
