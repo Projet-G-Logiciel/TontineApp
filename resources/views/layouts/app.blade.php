@@ -15,9 +15,9 @@
 <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/icons/logo.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/icons/logo.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/icons/logo.ico') }}">
     <link rel="manifest" href="assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
