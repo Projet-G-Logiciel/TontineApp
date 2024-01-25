@@ -10,8 +10,8 @@
       <div class="content">
         <nav class="mb-2" aria-label="breadcrumb">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#!">Pages</a></li>
-            <li class="breadcrumb-item active">Listes des members</li>
+            <li class="breadcrumb-item"><a href="#!">Dashboard \</a>..</li>
+            <li class=" active">Listes des members</li>
           </ol>
         </nav>
         <h2 class="text-bold text-1100 mb-5">Liste des Members</h2>
@@ -27,8 +27,8 @@
             <div class="col-auto">
               <div class="d-flex align-items-center">
                 <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                {{-- <button data-toggle="modal" data-target="#add-member" class="btn btn-primary"><span class="fas fa-plus me-2"></span>Add member</button></div> --}}
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add member</button>
+                {{-- <button data-toggle="modal" data-target="#add-membre" class="btn btn-primary"><span class="fas fa-plus me-2"></span>Add membre</button></div> --}}
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button>
             </div>
             @include('membres.add_member-modal')
           </div>
@@ -49,17 +49,17 @@
                     </tr>
                 </thead>
                 <tbody class="list" id="members-table-body">
-                    @foreach ($membre as $member)
+                    @foreach ($membres as $membre)
                         <tr class="hover-actions-trigger btn-reveal-trigger position-static">
                             <td class="fs--1 align-middle ps-0 py-3">
                             <div class="form-check mb-0 fs-0"><input class="form-check-input" type="checkbox" data-bulk-select-row='{"customer":{"avatar":"/team/32.webp","name":"Carry Anna"},"email":"annac34@gmail.com","mobile":"+912346578","city":"Budapest","lastActive":"34 min ago","joined":"Dec 12, 12:56 PM"}' /></div>
                             </td>
-                            <td class="customer align-middle white-space-nowrap"><a class="d-flex align-items-center text-900 text-hover-1000" href="#!">{{ $member->name }}</a></td>
-                            <td class="email align-middle white-space-nowrap"><a class="fw-semi-bold" href="mailto:annac34@gmail.com">{{ $member->surname }}</a></td>
-                            <td class="mobile_number align-middle white-space-nowrap"><a class="fw-bold text-1100" href="tel:+912346578">{{ $member->sex }}</a></td>
-                            <td class="city align-middle white-space-nowrap text-900">{{ $member->email }}</td>
-                            <td class="city align-middle white-space-nowrap text-900">{{ $member->nom_profil }}</td>
-                            <td class="customer align-middle white-space-nowrap"><a class="d-flex align-items-center text-900 text-hover-1000" href="{{ route('delete_membre', ['id'=>$member->id]) }}"><i class="fa fa-trash text-danger"></i></a></td>
+                            <td class="customer align-middle white-space-nowrap"><a class="d-flex align-items-center text-900 text-hover-1000" href="#!">{{ $membre->name }}</a></td>
+                            <td class="email align-middle white-space-nowrap"><a class="fw-semi-bold" href="mailto:annac34@gmail.com">{{ $membre->surname }}</a></td>
+                            <td class="mobile_number align-middle white-space-nowrap"><a class="fw-bold text-1100" href="tel:+912346578">{{ $membre->sex }}</a></td>
+                            <td class="city align-middle white-space-nowrap text-900">{{ $membre->email }}</td>
+                            <td class="city align-middle white-space-nowrap text-900">{{ $membre->nom_profil }}</td>
+                            <td class="customer align-middle white-space-nowrap"><a class="d-flex align-items-center text-900 text-hover-1000" href="{{ route('delete_membre', ['id'=>$membre->id]) }}"><i class="fa fa-trash text-danger"></i></a></td>
                         </tr>
                     @endforeach
 
@@ -72,5 +72,4 @@
 
 
 
-<!-- Mirrored from prium.github.io/phoenix/v1.13.0/pages/members.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 Jan 2024 12:26:20 GMT -->
 @endsection

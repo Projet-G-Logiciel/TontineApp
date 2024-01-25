@@ -16,9 +16,9 @@ class HomeController extends Controller
 
     //affiche la liste des membres
     public function liste_membre(){
-        $profil=Profil::all();
-        $membre = Profil::join('users','profils.id','=','users.profil_id')->get();
-        return view('membres.liste_membre', ['profil'=>$profil, 'membre'=>$membre]);
+        $profils=Profil::all();
+        $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
+        return view('membres.liste_membre', ['profils'=>$profils, 'membres'=>$membres]);
     }
 
     //ajoute un membre
@@ -41,14 +41,14 @@ class HomeController extends Controller
             'password' => $password,
 
         ]);
-        return back()->with('suppression reussi');
+        return back()->with('Ajout reussi');
     }
 
     //supprime un membre
     public function delete_membre($id){
         $user=User::find($id);
         $user->delete();
-        return back()->with('suppression reussi');
+        return back()->with('suppression reussie');
     }
 
 }

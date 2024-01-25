@@ -25,23 +25,23 @@ class DatabaseSeeder extends Seeder
         // profils seeders
         DB::table('profils')->insert([
             'nom_profil' => 'President',
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
         DB::table('profils')->insert([
             'nom_profil' => 'Secretaire',
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
         DB::table('profils')->insert([
             'nom_profil' => 'Tresorier',
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
         DB::table('profils')->insert([
             'nom_profil' => 'Membre',
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
 
 
@@ -54,8 +54,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'junior@gmail.com',
             'password' => Hash::make('junior'),
             'profil_id'=>1,
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
         DB::table('users')->insert([
             'name' => 'arnold',
@@ -64,8 +64,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'arnold@gmail.com',
             'password' => Hash::make('arnold'),
             'profil_id'=>2,
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
         DB::table('users')->insert([
             'name' => 'borel',
@@ -74,8 +74,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'borel@gmail.com',
             'password' => Hash::make('borel'),
             'profil_id'=>3,
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
         DB::table('users')->insert([
             'name' => 'gladys',
@@ -84,8 +84,37 @@ class DatabaseSeeder extends Seeder
             'email' => 'gladys@gmail.com',
             'password' => Hash::make('gladys'),
             'profil_id'=>4,
-            'created_at'=> now(),
-            'updated_at' => now(),
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
         ]);
+        
+        
+        //notifications seeders
+
+        DB::table('notifications')->insert([
+            'description' => "Notification : Vous avez reçu un nouvel email de John Doe. Sujet : Réunion de demain. Bonjour, n'oubliez pas notre réunion de demain à 10h. Cordialement, John.",
+            'user_id'=>1,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('notifications')->insert([
+            'description' => "Notification : Vous avez reçu un nouvel email de John Doe. Sujet : Réunion de demain. Bonjour, n'oubliez pas notre réunion de demain à 10h. Cordialement, John.",
+            'user_id'=>2,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('notifications')->insert([
+            'description' => "Notification : Vous avez reçu un nouvel email de John Doe. Sujet : Réunion de demain. Bonjour, n'oubliez pas notre réunion de demain à 10h. Cordialement, John.",
+            'user_id'=>3,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('notifications')->insert([
+            'description' => "Notification : Vous avez reçu un nouvel email de John Doe. Sujet : Réunion de demain. Bonjour, n'oubliez pas notre réunion de demain à 10h. Cordialement, John.",
+            'user_id'=>4,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+
     }
 }

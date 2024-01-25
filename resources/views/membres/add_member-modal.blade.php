@@ -19,8 +19,8 @@
                                         <label class="form-label" for="basic-form-name">Sexe</label>
                                         <select name="sexe"class="form-control" required>
                                           <option value="">Faire un choix</option>
-                                            <option> Feminin </option>
                                             <option> Masculin </option>
+                                            <option> Feminin </option>
                                       </select>
                                     </div>
                                     <div class="mb-3">
@@ -31,8 +31,8 @@
                                       <label class="form-label" for="basic-form-password">Profil</label>
                                       <select name="profil" id="profil"  class="form-control" required>
                                         <option value="">Faire un choix</option>
-                                        @foreach ($profil as $profils)
-                                          <option value="{{ $profils->id}}"> {{ $profils->nom_profil}} </option>
+                                        @foreach ($profils as $profil)
+                                          <option value="{{ $profil->id}}"> {{ $profil->nom_profil}} </option>
                                         @endforeach
                                     </select>
                                     </div>
