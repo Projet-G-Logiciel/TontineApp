@@ -37,7 +37,7 @@
                     <!-- parent pages-->
 
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                        <a class="nav-link label-1" href="{{ route('membre') }}" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <span><img src="{{ asset('assets/img/icons/membres.png') }}" alt="" width="18" height="18" style="margin-right: 5px"></span><span class="nav-link-text" style="font-size:15px">Listes des membres</span>
                             </div>
@@ -46,7 +46,7 @@
                     
                     <!-- parent pages-->
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="{{ route('membre') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <span><img src="{{ asset('assets/img/icons/emprunt.png') }}" alt="" width="18" height="18" style="margin-right: 5px"></span><span class="nav-link-text" style="font-size:15px">Emprunts</span>
                             </div>
