@@ -6,7 +6,7 @@
         <a class="navbar-brand me-1 me-sm-3" href="{{ route('dashboard') }}">
         <div class="d-flex align-items-center">
             <div class="d-flex align-items-center"><img src="{{ asset('assets/img/logos/logo.png') }}" alt="Tontine" width="80">
-            <p class="logo-text ms-2 d-none d-sm-block">Tontine</p>
+                <p class="logo-text ms-2 d-none d-sm-block">Tontine</p>
             </div>
         </div>
         </a>

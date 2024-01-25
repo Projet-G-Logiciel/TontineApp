@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seance extends Model
 {
+    protected $fillable = [
+        'dateSeance',
+    ];
     use HasFactory;
 }
