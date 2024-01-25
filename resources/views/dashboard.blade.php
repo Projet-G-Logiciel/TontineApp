@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="content">
+    <div class="content">
+      <nav class="mb-2" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#!">Dashboard \</a></li>
+        </ol>
+      </nav>
+
     <div class="pb-5">
       <div class="row g-4">
         <h4 class="mb-2">    Date de la prochaine seance : </h4>

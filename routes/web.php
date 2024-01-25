@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingMeetController;
 use App\Http\Controllers\SeanceController;
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,5 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/settingMeet', [SettingMeetController::class, 'settingStore'])->name('settingMeetStore');
     Route::get('/seance', [SeanceController::class, 'seance'])->name('seance');
 });
+Route::get('/member', [HomeController::class, 'liste_membre'])->name('membre');
+Route::post('/add_membre', [HomeController::class, 'add_membre'])->name('add');
+Route::get('/delete_membre/{id}', [HomeController::class, 'delete_membre'])->name('delete_membre');
+Route::get('/notification', [HomeController::class, 'notification'])->name('notification');
 
 require __DIR__.'/auth.php';
