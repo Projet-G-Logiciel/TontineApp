@@ -10,69 +10,85 @@
 </style> --}}
 <div class="content">
     <div class="pb-5">
-    
+        <nav class="mb-2" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="#!">Dashboard \</a>..</li>
+              <li class=" active">Paramètres de la tontine</li>
+            </ol>
+          </nav>
         <div class="card mb-4 col-md-8">
             <div class="card-header d-flex align-items-center">
                 <img src="{{ asset('assets/img/logos/logo.png') }}" class="rounded-circle border border-primary" alt="Tontine" width="80">
                 <p class="logo-text ms-2 d-none d-sm-block">Tontine</p>
             </div>
+            @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
+                <div class="card-body col-12 col-md-9">
+                    <div>
+                        <label for="text-input" class=" form-control-label">Frequence de la reunion :</label>
+                    </div>
 
+                    <div>
+                        <input type="radio" name="frequence" class="mx-3" value="0" id="" onclick="moreInfo()" >Par semaine
+                        <input type="radio" name="frequence" class="mx-3" value="1" id="" onclick="moreInfo()" >Par mois
+                    </div>
+
+
+                        <div id="formulaire" class="mt-3" style="display: none;">
+                            <div class="row form-group">
+                                <div>
+                                    <label for="text-input" class=" form-control-label">Jour de la reunion</label>
+                                </div>
+                                <div class="col-md-6">
+                                    {{-- <input type="text-input" id="input-nom" name="vrai_nom" placeholder="Quand debut votre Tontine??" value="{{ $cause->objet?? old('vrai_nom') }}"  class="form-control"> --}}
+                                    <select class="form-control" id="dayOfWeek">
+                                        <option value="#" selected>Choisir un jour de la semaine</option>
+                                        <option value="0">Dimanche</option>
+                                        <option value="1">Lundi</option>
+                                        <option value="2">Mardi</option>
+                                        <option value="3">Mercredi</option>
+                                        <option value="4">Jeudi</option>
+                                        <option value="5">Vendredi</option>
+                                        <option value="6">Samedi</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="text-input" class=" form-control-label">Quantieme semaine du mois</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" id="weekNumber" name="" class="form-control">
+                                </div>
+
+                                <div class="col-md-6 mt-1">
+                                    <button class="btn btn-primary" onclick="afficherDates()">Afficher les Dates</button>
+                                </div>
+                                <form action="{{route('settingMeetStore')}}" method="post" onsubmit="return validateForm()">
+                                    @csrf
+                                        <ul id="result"></ul>
+                                        <div id="resultat"></div>
+                                        <input type="submit" value="Valider" class="form-control">
+                                    </form>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            @else
             <div class="card-body col-12 col-md-9">
                 <div>
-                    <label for="text-input" class=" form-control-label">Frequence de la reunion :</label>
+                    <label for="text-input" class=" form-control-label">Cet onglet n'est accessible que par les membres du comité administratif</label>
                 </div>
-
-                <div>
-                    <input type="radio" name="frequence" class="mx-3" value="0" id="" onclick="moreInfo()" >Par semaine
-                    <input type="radio" name="frequence" class="mx-3" value="1" id="" onclick="moreInfo()" >Par mois
-                </div>
-
-
-                    <div id="formulaire" class="mt-3" style="display: none;">
-                        <div class="row form-group">
-                            <div>
-                                <label for="text-input" class=" form-control-label">Jour de la reunion</label>
-                            </div>
-                            <div class="col-md-6">
-                                {{-- <input type="text-input" id="input-nom" name="vrai_nom" placeholder="Quand debut votre Tontine??" value="{{ $cause->objet?? old('vrai_nom') }}"  class="form-control"> --}}
-                                <select class="form-control" id="dayOfWeek">
-                                    <option value="#" selected>Choisir un jour de la semaine</option>
-                                    <option value="0">Dimanche</option>
-                                    <option value="1">Lundi</option>
-                                    <option value="2">Mardi</option>
-                                    <option value="3">Mercredi</option>
-                                    <option value="4">Jeudi</option>
-                                    <option value="5">Vendredi</option>
-                                    <option value="6">Samedi</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label for="text-input" class=" form-control-label">Quantieme semaine du mois</label>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="number" id="weekNumber" name="" class="form-control">
-                            </div>
-
-                            <div class="col-md-6 mt-1">
-                                <button class="btn btn-primary" onclick="afficherDates()">Afficher les Dates</button>
-                            </div>
-                            <form action="{{route('settingMeetStore')}}" method="post" >
-                            @csrf
-                                <ul id="result"></ul>
-                                <div id="resultat"></div>
-                                <input type="submit" name="Valider" class="form-control">
-                            </form>
-                        </div>
-                    </div>
-                    
-                
             </div>
+            @endif
         </div>
     </div>
 </div>
 
 <script>
+
+    var datesIsShow = false;
+
+
      function moreInfo() {
       var formulaire = document.getElementById("formulaire");
       formulaire.style.display = "block";
@@ -127,7 +143,15 @@
         document.getElementById('resultat').appendChild(listItem);
         //document.getElementById('resultat').appendChild("<input type='hidden' name='dateSeance"+j+"'value='"+list_date[j]+"'>");
       }
-      console.log(list_date)
+      datesIsShow = true;
+    }
+
+    function validateForm() {
+        if (!datesIsShow) {
+            alert("Veuillez d'abord afficher les dates.");
+            return false;
+        }
+        return true;
     }
 </script>
 @endsection
