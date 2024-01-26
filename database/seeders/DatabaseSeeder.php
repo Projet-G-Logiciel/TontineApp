@@ -87,8 +87,8 @@ class DatabaseSeeder extends Seeder
             'created_at'=> now(+1),
             'updated_at' => now(+1),
         ]);
-        
-        
+
+
         //notifications seeders
 
         DB::table('notifications')->insert([
@@ -111,6 +111,56 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('notifications')->insert([
             'description' => "Notification : Vous avez reçu un nouvel email de John Doe. Sujet : Réunion de demain. Bonjour, n'oubliez pas notre réunion de demain à 10h. Cordialement, John.",
+            'user_id'=>4,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+
+
+        DB::table('malheurs')->insert([
+            'type' => "Aide père",
+            'user_id'=>1,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide mère",
+            'user_id'=>1,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide père",
+            'user_id'=>2,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide mère",
+            'user_id'=>2,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide père",
+            'user_id'=>3,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide mère",
+            'user_id'=>3,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide père",
+            'user_id'=>4,
+            'created_at'=> now(+1),
+            'updated_at' => now(+1),
+        ]);
+        DB::table('malheurs')->insert([
+            'type' => "Aide mère",
             'user_id'=>4,
             'created_at'=> now(+1),
             'updated_at' => now(+1),

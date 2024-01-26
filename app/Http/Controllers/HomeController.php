@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Malheur;
 use App\Models\User;
 use App\Models\Profil;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +42,15 @@ class HomeController extends Controller
             'password' => $password,
 
         ]);
+
+        $malheur1 = Malheur::create([
+            'type'=>"Aide père",
+            'user_id'=>$user->id
+        ]);
+        $malheur2 = Malheur::create([
+            'type'=>"Aide mère",
+            'user_id'=>$user->id
+        ]);
         return back()->with('Ajout reussi');
     }
 
@@ -50,5 +60,34 @@ class HomeController extends Controller
         $user->delete();
         return back()->with('suppression reussie');
     }
+
+
+    //Signaler un malheur
+    public function Signaler_malheur(){
+        $user=Auth::id();
+        $malheurs=Malheur::where('user_id', $user)->get();
+        return view('malheur.malheur', compact('malheurs'));
+    }
+    public function update_malheur(Request $request){
+        $option1 = $request->input('option1');
+        $option2 = $request->input('option2');
+        $option3 = $request->input('option3');
+        $user=Auth::id();
+        $pere="aide père";
+        $mere="aide mère";
+        if ($option1 == 'on' ) {
+            $malheur=Malheur::where('user_id', $user)->where('type', $pere)->update(['statut' => 1]);
+            return back()->with('');
+        }
+        if ($option2 == 'on' ) {
+            $malheur=Malheur::where('user_id', $user)->where('type', $mere)->update(['statut' => 1]);
+            return back()->with('');
+        }
+         else {
+            return back()->with('');
+        }
+
+    }
+
 
 }

@@ -59,10 +59,14 @@
                             <td class="mobile_number align-middle white-space-nowrap"><a class="fw-bold text-1100" href="tel:+912346578">{{ $membre->sex }}</a></td>
                             <td class="city align-middle white-space-nowrap text-900">{{ $membre->email }}</td>
                             <td class="city align-middle white-space-nowrap text-900">{{ $membre->nom_profil }}</td>
-                            <td class="customer align-middle white-space-nowrap"><a class="d-flex align-items-center text-900 text-hover-1000" href="{{ route('delete_membre', ['id'=>$membre->id]) }}"><i class="fa fa-trash text-danger"></i></a></td>
-                        </tr>
-                    @endforeach
+                            <td class="customer align-middle white-space-nowrap">
+                                <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#verticallyCentere"><i class="fa fa-trash text-danger"></i></button>
+                            </td>
 
+                        </tr>
+
+                    @endforeach
+                    @include('membres.delete_membre-modal')
                 </tbody>
               </table>
             </div>
