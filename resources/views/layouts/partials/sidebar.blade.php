@@ -36,7 +36,14 @@
                     <div class="nav-item-wrapper">
                         <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <span><img src="{{ asset('assets/img/icons/emprunt.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Emprunts</span>
+                                <a href="{{route('emprunt.show')}}">
+                                <span>
+                                    
+                                    <img src="{{ asset('assets/img/icons/emprunt.png') }}" alt="" width="15" height="15" style="margin-right: 5px">
+                                </span>
+                                <span class="nav-link-text">Emprunt</span>
+                            </a>
+                                    
                             </div>
                         </a>
                     </div><!-- parent pages-->
@@ -50,7 +57,7 @@
                     <div class="nav-item-wrapper">
                         <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <span><img src="{{ asset('assets/img/icons/remboursement.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text">Remboursements</span>
+                                <span><img src="{{ asset('assets/img/icons/remboursement.png') }}" alt="" width="15" height="15" style="margin-right: 5px"></span><span class="nav-link-text"><a href="{{route('rembourssement.show')}}">Remboursements</a></span>
                             </div>
                         </a>
                     </div><!-- parent pages-->
