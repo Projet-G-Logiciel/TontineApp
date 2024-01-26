@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Demande_emprunt;
 
 use Illuminate\Http\Request;
@@ -20,5 +21,10 @@ class EmpruntController extends Controller
         ]);
 
         return back()->with('Emprunt Demander.');
+    }
+    public function show(){
+        $emprunts = Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->get();
+
+        return view('emprunt',['emprunts'=>$emprunts]);
     }
 }

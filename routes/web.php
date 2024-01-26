@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RemboursementController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeanceController;
@@ -31,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/emprunt', [EmpruntController::class, 'show'])->name('emprunt.show');
+    Route::get('/remboursement', [RemboursementController::class, 'show'])->name('remboursement.show');
 
     Route::get('/settingMeet', [SettingMeetController::class, 'setting'])->name('settingMeet');
     Route::post('/settingMeet', [SettingMeetController::class, 'settingStore'])->name('settingMeetStore');

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Emprunt;
 use App\Models\Profil;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -47,6 +48,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function emprunt(){
+        return $this->belongsTo(Emprunt::class);
+    }
     function notifications(){
         return $this->hasMany(Notification::class);
     }
