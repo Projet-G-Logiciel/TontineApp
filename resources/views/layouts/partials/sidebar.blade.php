@@ -58,12 +58,6 @@
                         <a class="nav-link label-1" href="{{ route('malheur') }}" role="button" data-bs-toggle="" aria-expanded="false">
 
                             <div class="d-flex align-items-center">
-                                <span>
-                                    
-                                    <img src="{{ asset('assets/img/icons/emprunt.png') }}" alt="" width="15" height="15" style="margin-right: 5px">
-                                </span>
-                                <span class="nav-link-text">Emprunt</span>
-                                    
                                 <span><img src="{{ asset('assets/img/icons/malheur.png') }}" alt="" width="18" height="18" style="margin-right: 5px"></span><span class="nav-link-text" style="font-size:15px">Malheurs</span>
                             </div>
                         </a>
@@ -71,7 +65,7 @@
 
                     <!-- parent pages-->
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
+                        <a class="nav-link label-1" href="{{route('remboursement.show')}}" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <span><img src="{{ asset('assets/img/icons/remboursement.png') }}" alt="" width="18" height="18" style="margin-right: 5px"></span><span class="nav-link-text" style="font-size:15px">Remboursements</span>
                             </div>
@@ -80,7 +74,7 @@
 
                     <!-- parent pages-->
                     <div class="nav-item-wrapper">
-                        <a class="nav-link label-1" href="{{route('remboursement.show')}}" role="button" data-bs-toggle="" aria-expanded="false">
+                        <a class="nav-link label-1" href="#" role="button" data-bs-toggle="" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <span><img src="{{ asset('assets/img/icons/report.png') }}" alt="" width="18" height="18" style="margin-right: 5px"></span><span class="nav-link-text" style="font-size:15px">Rapport</span>
                             </div>

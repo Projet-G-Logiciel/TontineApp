@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="content">
+    <nav class="mb-2" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#!">Dashboard \</a>..</li>
+          <li class=" active">Seance</li>
+        </ol>
+      </nav>
     <div class="pb-5">
         @if ($seance == null)
             <div class="row g-4 mb-3">
