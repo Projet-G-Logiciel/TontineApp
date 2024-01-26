@@ -56,7 +56,6 @@
             @include('modal')
         @endif
     </div>
-</div>
 
 
 
