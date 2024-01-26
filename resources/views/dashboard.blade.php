@@ -62,6 +62,7 @@
               <h3>Total sells</h3>
               <p class="text-700 lh-sm mb-0">Payment received across all channels</p>
             </div>
+            
         </div>
 
 @endsection

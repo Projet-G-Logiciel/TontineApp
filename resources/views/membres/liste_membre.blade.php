@@ -27,8 +27,10 @@
             <div class="col-auto">
               <div class="d-flex align-items-center">
                 <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-                {{-- <button data-toggle="modal" data-target="#add-membre" class="btn btn-primary"><span class="fas fa-plus me-2"></span>Add membre</button></div> --}}
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button>
+                {{-- voici le bout de code qui gere l'accés --}}
+                @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
+                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button>
+                @endif
             </div>
             @include('membres.add_member-modal')
           </div>
@@ -45,7 +47,9 @@
                     <th class="sort align-middle" scope="col" data-sort="customer" style="width:15%; min-width:200px;">SEXE</th>
                     <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">EMAIL</th>
                     <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">PROFIL</th>
-                    <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">SUPPRIMER</th>
+                    @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
+                      <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">SUPPRIMER</th>
+                    @endif
                     </tr>
                 </thead>
                 <tbody class="list" id="members-table-body">
@@ -59,10 +63,12 @@
                             <td class="mobile_number align-middle white-space-nowrap"><a class="fw-bold text-1100" href="tel:+912346578">{{ $membre->sex }}</a></td>
                             <td class="city align-middle white-space-nowrap text-900">{{ $membre->email }}</td>
                             <td class="city align-middle white-space-nowrap text-900">{{ $membre->nom_profil }}</td>
-                            <td class="customer align-middle white-space-nowrap">
-                                <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#verticallyCentere"><i class="fa fa-trash text-danger"></i></button>
-                            </td>
 
+                            @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
+                               <td class="customer align-middle white-space-nowrap">
+                                  <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#verticallyCentere"><i class="fa fa-trash text-danger"></i></button>
+                              </td>
+                            @endif
                         </tr>
 
                     @endforeach

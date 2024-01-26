@@ -1,10 +1,14 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SettingMeetController;
-use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\RemboursementController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\EmpruntController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VersementController;
+use App\Http\Controllers\SettingMeetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +34,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/emprunt', [EmpruntController::class, 'show'])->name('emprunt.show');
+    Route::get('/remboursement', [RemboursementController::class, 'show'])->name('remboursement.show');
+
     Route::get('/settingMeet', [SettingMeetController::class, 'setting'])->name('settingMeet');
     Route::post('/settingMeet', [SettingMeetController::class, 'settingStore'])->name('settingMeetStore');
+
     Route::get('/seance', [SeanceController::class, 'seance'])->name('seance');
+    Route::post('/addcotisation', [VersementController::class, 'addcotisation'])->name('storeCotisation');
+    Route::post('/addEpargne', [VersementController::class, 'addEpargne'])->name('storeEpargne');
+
+    Route::post('/demandeEmprunt', [EmpruntController::class, 'demandeEmprunt'])->name('storeDemandeEmprunt');
+
 });
 //gestion des membres
 Route::get('/member', [HomeController::class, 'liste_membre'])->name('membre');
