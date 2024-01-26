@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class EmpruntController extends Controller
 {
     public function show(){
-        $emprunts = Emprunt::all();
+        $emprunts = Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->get();
+
         return view('emprunt',['emprunts'=>$emprunts]);
     }
     
