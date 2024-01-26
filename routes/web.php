@@ -47,9 +47,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/demandeEmprunt', [EmpruntController::class, 'demandeEmprunt'])->name('storeDemandeEmprunt');
 
 });
+//gestion des membres
 Route::get('/member', [HomeController::class, 'liste_membre'])->name('membre');
 Route::post('/add_membre', [HomeController::class, 'add_membre'])->name('add');
 Route::get('/delete_membre/{id}', [HomeController::class, 'delete_membre'])->name('delete_membre');
-Route::get('/notification', [HomeController::class, 'notification'])->name('notification');
+
+//malheur
+Route::get('/malheur', [HomeController::class, 'Signaler_malheur'])->name('malheur');
+Route::post('/signaler_malheur', [HomeController::class, 'update_malheur'])->name('signaler_malheur');
+
+
 
 require __DIR__.'/auth.php';

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Malheur extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'type',
+        'statut',
+        'user_id',
+    ];
 }
