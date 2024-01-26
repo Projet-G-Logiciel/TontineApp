@@ -20,7 +20,7 @@ class SeanceController extends Controller
         // dd($dateSeance);
 
         return view('seance',[
-            'dateSeance' => $dateSeance,
+            'seance' => $dateSeance,
         ]);
     }
 }
