@@ -7,7 +7,6 @@ use App\Models\Notification;
 use App\Models\Emprunt;
 
 use Illuminate\Http\Request;
-use App\Models\Demande_emprunt;
 use Illuminate\Support\Facades\Auth;
 
 class EmpruntController extends Controller
