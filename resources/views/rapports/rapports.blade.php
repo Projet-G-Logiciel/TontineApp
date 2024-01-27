@@ -25,7 +25,7 @@
             <?php $i++ ?>
                 <tr class="hover-actions-trigger btn-reveal-trigger position-static">
                     <td class="customer align-middle white-space-nowrap"><a class="d-flex align-items-center text-900 text-hover-1000" href="{{ route('rapport_seance', ['id'=>$seance->id]) }}">seance {{ $i }}</a></td>
-                    <td class="email align-middle white-space-nowrap"><a class="fw-semi-bold" href="mailto:annac34@gmail.com">{{ $seance->created_at }}</a></td>
+                    <td class="email align-middle white-space-nowrap"><a class="fw-semi-bold" href="mailto:annac34@gmail.com">{{ $seance->dateSeance }}</a></td>
                 </tr>
 
             @endforeach
