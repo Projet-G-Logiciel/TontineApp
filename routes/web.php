@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/demandeEmprunt', [EmpruntController::class, 'demandeEmprunt'])->name('storeDemandeEmprunt');
 
+    Route::get('/accepterEmprunt-{montant}-{id_user}-{id}', [EmpruntController::class, 'acceptEmprunt'])->name('storeEmprunt');
+    Route::get('/refuserEmprunt-{id}', [EmpruntController::class, 'refuserEmprunt'])->name('crashEmprunt');
+
 });
 //gestion des membres
 Route::get('/member', [HomeController::class, 'liste_membre'])->name('membre');

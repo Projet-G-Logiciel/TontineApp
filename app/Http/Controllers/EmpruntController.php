@@ -31,9 +31,37 @@ class EmpruntController extends Controller
 
         return back()->with('Emprunt Demander.');
     }
-    public function show(){
-        $emprunts = Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->get();
 
-        return view('emprunt',['emprunts'=>$emprunts]);
+    public function acceptEmprunt($montant, $id_user, $id)
+    {
+        $emprunt = Emprunt::create([
+            'montant' => $montant,
+            'status' => 1,
+            'user_id' => $id_user
+        ]);
+
+        $demandeEmprunt=Demande_emprunt::find($id);
+        $demandeEmprunt->status = 1;
+        $demandeEmprunt->save();
+        return back()->with('Emprunt Enregistrer.');
+    }
+
+    public function refuserEmprunt($id)
+    {
+        $demandeEmprunt=Demande_emprunt::find($id);
+        $demandeEmprunt->status = 2;
+        $demandeEmprunt->save();
+        return back()->with('Emprunt Refuser.');
+    }
+
+    public function show()
+    {
+        $emprunts = Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->get();
+        $demandeEmprunt = Demande_emprunt::join('users','users.id','=','demande_emprunts.user_id')->select('demande_emprunts.*','users.name')->where('status', '0')->get();
+        // dd($demandeEmprunt);
+        return view('emprunt',[
+            'emprunts'=>$emprunts,
+            'demandeEmprunts' => $demandeEmprunt,
+        ]);
     }
 }
