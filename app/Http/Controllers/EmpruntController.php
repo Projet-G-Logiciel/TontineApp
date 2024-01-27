@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Demande_emprunt;
+use App\Models\Notification;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,13 @@ class EmpruntController extends Controller
             'user_id'=>Auth::user()->id,
             'seance_id'=>$request->id_seance,
         ]);
+
+        $descriptionNotif = "Le membre ".Auth::user()->name." veux emprunter une somme de ".$demandeEmprunt->montant." pour ". $demandeEmprunt->objet ." c'est possible?";
+        $notif = Notification::create([
+            'description' => $descriptionNotif,
+            'user_id' => Auth::user()->id,
+        ]);
+        // dd($descriptionNotif);
 
         return back()->with('Emprunt Demander.');
     }

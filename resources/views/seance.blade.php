@@ -47,7 +47,7 @@
                 <div class="card-body col-12 col-md-9">
                     <div class="col-md-12 mb-3">
                         <label for="text-input" class=" form-control-label">Souhaitez-vous emprunter de l'argent?</label> <br>
-                        <button type="button" class="btn btn-primary {{ $i == 0 ? '' : 'disabled'}}" data-bs-toggle="modal" data-bs-target="#emprunt"> Emprunter </button> <br>
+                        <button type="button" class="btn btn-primary {{ $i == 0 ? 'disabled' : ''}}" data-bs-toggle="modal" data-bs-target="#emprunt"> Emprunter </button> <br>
                     </div>
                 </div>
             </div>
