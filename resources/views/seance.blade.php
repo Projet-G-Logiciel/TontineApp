@@ -7,7 +7,7 @@
           <li class="breadcrumb-item"><a href="#!">Dashboard \</a>..</li>
           <li class=" active">Seance</li>
         </ol>
-      </nav>
+    </nav>
     <div class="pb-5">
         @if ($seance == null)
             <div class="row g-4 mb-3">
@@ -41,6 +41,8 @@
                         <button class="btn btn-primary {{ $i == 0 ? '' : 'disabled'}} " type="button" data-bs-toggle="modal" data-bs-target="#epargne"> Epargne </button>
                     </div>
                 </div>
+            </div>
+
 
             <div class="card m-3 col-md-5">
                 <div class="card-header d-flex align-items-center">
@@ -67,7 +69,6 @@
             @include('modal')
         @endif
     </div>
-
-
+</div>
 
 @endsection
