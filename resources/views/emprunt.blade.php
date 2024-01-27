@@ -23,6 +23,7 @@
 
 
 
+      @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
 
       <h4 class="text-bold text-1100 mb-5">Liste des Demandes d'emprunts</h4>
       <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-white border-y border-300 mt-2 position-relative top-1">
@@ -72,8 +73,8 @@
 
 
 
+@else
 
-      
 
       <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-white border-y border-300 mt-2 position-relative top-1">
         <div class="table-responsive scrollbar ms-n1 ps-1">
@@ -111,7 +112,8 @@
           </table>
         </div>
       </div>
-    </div>    
+    @endif
+    </div>
   </div>
 </div>
 @endsection
