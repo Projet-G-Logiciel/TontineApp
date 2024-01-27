@@ -56,6 +56,10 @@ Route::get('/delete_membre/{id}', [HomeController::class, 'delete_membre'])->nam
 Route::get('/malheur', [HomeController::class, 'Signaler_malheur'])->name('malheur');
 Route::post('/signaler_malheur', [HomeController::class, 'update_malheur'])->name('signaler_malheur');
 
+//rapports
+Route::get('/rapports', [HomeController::class, 'rapports'])->name('rapports');
+Route::get('/rapport_seance/{id}', [HomeController::class, 'rapport_seance'])->name('rapport_seance');
+
 
 
 require __DIR__.'/auth.php';

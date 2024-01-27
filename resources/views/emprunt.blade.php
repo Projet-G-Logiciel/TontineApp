@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
- 
-@section('content')       
+
+@section('content')
 <div class="content">
   <nav class="mb-2" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
@@ -19,7 +19,7 @@
                 </form>
               </div>
             </div>
-            
+
           <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-white border-y border-300 mt-2 position-relative top-1">
             <div class="table-responsive scrollbar ms-n1 ps-1">
               <table class="table table-sm fs--1 mb-0">
@@ -32,7 +32,6 @@
                     <th class="sort align-middle" scope="col" data-sort="customer" style="width:15%; min-width:200px;">Montant</th>
                     <th class="sort align-middle" scope="col" data-sort="customer" style="width:15%; min-width:200px;">Status</th>
                     <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">Date</th>
-                      <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">SUPPRIMER</th>
                     </tr>
                 </thead>
                 <tbody class="list" id="members-table-body">
@@ -57,8 +56,8 @@
             </div>
           </div>
         </div>
-    
-      
-        
+
+
+
     </div>
       @endsection

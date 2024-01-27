@@ -14,7 +14,7 @@
                 <div class="card p-2">
                     <h4 class="mb-2"> Date de la prochaine seance n'a pas encore ete fixe... </h4>
                 </div>
-            </div>  
+            </div>
         @else
             <div class="row g-4 mb-3">
                 <h4 class="mb-2"> Date de la prochaine seance: {{ $seance->dateSeance}} </h4>
@@ -24,7 +24,7 @@
                     <div class="card-header d-flex align-items-center">
                         <p class="logo-text ms-2 d-none d-sm-block">Versement</p>
                     </div>
-                        
+
                     <div class="card-body col-12 col-md-9">
                         <div class="col-md-12 mb-3">
                             <label for="text-input" class=" form-control-label">Argent de la cotisation</label> <br>
@@ -41,16 +41,16 @@
                     <div class="card-header d-flex align-items-center">
                         <p class="logo-text ms-2 d-none d-sm-block">Emprunt</p>
                     </div>
-                        
+
                     <div class="card-body col-12 col-md-9">
                         <div class="col-md-12 mb-3">
                             <label for="text-input" class=" form-control-label">Souhaitez-vous emprunter de l'argent?</label> <br>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#emprunt"> Emprunter </button> <br>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#emprunt"> Demander un Emprunter </button> <br>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
 
             {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button> --}}
             {{-- @include('membres.add_member-modal') --}}

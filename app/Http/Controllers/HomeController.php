@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\Malheur;
+use App\Models\Seance;
 use App\Models\User;
 use App\Models\Profil;
+use App\Models\Emprunt;
+use App\Models\Versement;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +33,7 @@ class HomeController extends Controller
             'nom' => ['required', 'string', 'max:255'],
             'prenom' => ['required', 'string', 'max:255'],
             'sexe' => ['required', 'string', 'max:255'],
+            'number'=>['required', 'integer'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'profil' => ['required', 'string', 'max:255']
         ]);
@@ -37,6 +41,7 @@ class HomeController extends Controller
             'name' => $request->nom,
             'surname' =>$request->prenom,
             'sex' =>$request->sexe,
+            'number' =>$request->number,
             'email' => $request->email,
             'profil_id' =>$request->profil,
             'password' => $password,
@@ -88,6 +93,21 @@ class HomeController extends Controller
         }
 
     }
+ //les rapports
+  public function rapports(){
+    $seances=Seance::all();
 
+    // dd($seances);
+    return view('rapports.rapports', ['seances'=> $seances]);
+  }
+
+  public function rapport_seance($id){
+    $cotisations=Versement::join('users','users.id','=','versements.user_id')->select('versements.*','users.name')->where('seance_id', $id)->where('type', "Cotisation")->get();
+    $epargnes=Versement::join('users','users.id','=','versements.user_id')->select('versements.*','users.name')->where('seance_id', $id)->where('type', "Epargne")->get();
+    $emprunts=Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->where('status', 1)->get();
+
+    $seances=Seance::where('id', $id);// dd($cotisations);
+    return view('rapports.rapport_seance', ['cotisations'=>$cotisations, 'epargnes'=>$epargnes, 'emprunts'=>$emprunts, 'seances'=>$seances]);
+  }
 
 }
