@@ -14,7 +14,7 @@
                 <div class="card p-2">
                     <h4 class="mb-2"> Date de la prochaine seance n'a pas encore ete fixe... </h4>
                 </div>
-            </div>  
+            </div>
         @else
 
         <div class="row g-4 mb-3">
@@ -36,6 +36,7 @@
                         <label for="text-input" class=" form-control-label">Argent de la cotisation</label> <br>
                         <button type="button" class="btn btn-primary {{ $i == 0 ? '' : 'disabled'}}" data-bs-toggle="modal" data-bs-target="#cotisation"> Cotisation </button> <br>
                     </div>
+
                     <div class="col-md-12">
                         <label for="text-input" class=" form-control-label">Argent de l'epargne</label> <br>
                         <button class="btn btn-primary {{ $i == 0 ? '' : 'disabled'}} " type="button" data-bs-toggle="modal" data-bs-target="#epargne"> Epargne </button>
@@ -57,7 +58,7 @@
                     </div>
                 </div>
             </div>
-            
+
 
             {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button> --}}
             {{-- @include('membres.add_member-modal') --}}

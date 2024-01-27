@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
- 
-@section('content')       
+
+@section('content')
 <div class="content">
   <nav class="mb-2" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
@@ -67,6 +67,7 @@
             </tbody>
           </table>
         </div>
+
       </div>
 
 
