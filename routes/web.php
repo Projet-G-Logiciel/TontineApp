@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RemboursementController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeanceController;
@@ -32,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/emprunt', [EmpruntController::class, 'show'])->name('emprunt.show');
+    Route::get('/remboursement', [RemboursementController::class, 'show'])->name('remboursement.show');
+
     Route::get('/settingMeet', [SettingMeetController::class, 'setting'])->name('settingMeet');
     Route::post('/settingMeet', [SettingMeetController::class, 'settingStore'])->name('settingMeetStore');
 
@@ -42,9 +47,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/demandeEmprunt', [EmpruntController::class, 'demandeEmprunt'])->name('storeDemandeEmprunt');
 
 });
+//gestion des membres
 Route::get('/member', [HomeController::class, 'liste_membre'])->name('membre');
 Route::post('/add_membre', [HomeController::class, 'add_membre'])->name('add');
 Route::get('/delete_membre/{id}', [HomeController::class, 'delete_membre'])->name('delete_membre');
-Route::get('/notification', [HomeController::class, 'notification'])->name('notification');
+
+//malheur
+Route::get('/malheur', [HomeController::class, 'Signaler_malheur'])->name('malheur');
+Route::post('/signaler_malheur', [HomeController::class, 'update_malheur'])->name('signaler_malheur');
+
+
 
 require __DIR__.'/auth.php';

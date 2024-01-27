@@ -2,10 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Profil extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nom_profil',
+    ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
 }

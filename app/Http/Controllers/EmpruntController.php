@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Demande_emprunt;
 use App\Models\Notification;
 
+use App\Models\Emprunt;
+
 use Illuminate\Http\Request;
+use App\Models\Demande_emprunt;
 use Illuminate\Support\Facades\Auth;
 
 class EmpruntController extends Controller
@@ -28,5 +31,10 @@ class EmpruntController extends Controller
         // dd($descriptionNotif);
 
         return back()->with('Emprunt Demander.');
+    }
+    public function show(){
+        $emprunts = Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->get();
+
+        return view('emprunt',['emprunts'=>$emprunts]);
     }
 }
