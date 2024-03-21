@@ -14,7 +14,7 @@
             <li class=" active">Listes des members</li>
           </ol>
         </nav>
-        <h2 class="text-bold text-1100 mb-5">Liste des Members</h2>
+        <h2 class="text-bold text-1100 mb-5">Liste des Members du Groupe {{$membres[0]->nom_profil}}</h2>
         <div id="members" data-list='{"valueNames":["customer","email","mobile_number","city","last_active","joined"],"page":10,"pagination":true}'>
           <div class="row align-items-center justify-content-between g-3 mb-4">
             <div class="col col-auto">
@@ -29,7 +29,7 @@
                 <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
                 {{-- voici le bout de code qui gere l'accés --}}
                 @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
-                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#member">Add membre</button>
                 @endif
             </div>
             @include('membres.add_member-modal')
@@ -46,7 +46,6 @@
                     <th class="sort align-middle" scope="col" data-sort="customer" style="width:15%; min-width:200px;">PRENOM</th>
                     <th class="sort align-middle" scope="col" data-sort="customer" style="width:15%; min-width:200px;">SEXE</th>
                     <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">EMAIL</th>
-                    <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">PROFIL</th>
                     @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
                       <th class="sort align-middle" scope="col" data-sort="email" style="width:15%; min-width:200px;">SUPPRIMER</th>
                     @endif
@@ -62,7 +61,6 @@
                             <td class="email align-middle white-space-nowrap"><a class="fw-semi-bold" href="mailto:annac34@gmail.com">{{ $membre->surname }}</a></td>
                             <td class="mobile_number align-middle white-space-nowrap"><a class="fw-bold text-1100" href="tel:+912346578">{{ $membre->sex }}</a></td>
                             <td class="city align-middle white-space-nowrap text-900">{{ $membre->email }}</td>
-                            <td class="city align-middle white-space-nowrap text-900">{{ $membre->nom_profil }}</td>
 
                             @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
                                <td class="customer align-middle white-space-nowrap">
