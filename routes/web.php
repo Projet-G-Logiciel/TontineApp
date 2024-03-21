@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\RemboursementController;
-
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VersementController;
 use App\Http\Controllers\SettingMeetController;
+use App\Http\Controllers\RemboursementController;
+use App\Http\Controllers\VerificationCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,9 @@ use App\Http\Controllers\SettingMeetController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+})->name('dashboard');
+Route::get('/verificationCode-{id}', [VerificationCodeController::class, 'verificationCode'])->name('code');
+Route::post('/verification', [VerificationCodeController::class, 'verification'])->name('verification');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
