@@ -18,6 +18,12 @@ class HomeController extends Controller
 {
 
 
+    public function home(){
+        $profils=Profil::all();
+        $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
+        return view('dashboard', ['profils'=>$profils, 'membres'=>$membres]);
+    }
+
     //affiche la liste des membres
     public function liste_membre(){
         $profils=Profil::all();
@@ -110,4 +116,26 @@ class HomeController extends Controller
     return view('rapports.rapport_seance', ['cotisations'=>$cotisations, 'epargnes'=>$epargnes, 'emprunts'=>$emprunts, 'seances'=>$seances]);
   }
 
+  //logs
+  //affiche la liste des membres
+  public function liste_log(){
+    $profils=Profil::all();
+    $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
+    return view('logs.liste_log', ['profils'=>$profils, 'membres'=>$membres]);
+    }
+
+    public function export_log(){
+        $profils=Profil::all();
+        $liste = [];
+        foreach ($profils as $profil) {
+            $liste[] = [$profil->id,$profil->nom_profil];
+        }
+        $contenu = "";
+        foreach ($liste as $ligne) {
+            $contenu .= implode(",", $ligne) . "\n";
+        }
+        file_put_contents("logs.txt", $contenu);
+
+        return response()->download("logs.txt");
+    }
 }

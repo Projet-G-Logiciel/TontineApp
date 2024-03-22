@@ -25,9 +25,7 @@ use App\Http\Controllers\SettingMeetController;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'home'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -62,6 +60,10 @@ Route::post('/signaler_malheur', [HomeController::class, 'update_malheur'])->nam
 //rapports
 Route::get('/rapports', [HomeController::class, 'rapports'])->name('rapports');
 Route::get('/rapport_seance/{id}', [HomeController::class, 'rapport_seance'])->name('rapport_seance');
+
+//Log
+Route::get('/log', [HomeController::class, 'liste_log'])->name('log');
+Route::get('/export', [HomeController::class, 'export_log'])->name('export_log');
 
 
 
