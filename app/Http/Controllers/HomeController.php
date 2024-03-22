@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Malheur;
-use App\Models\Seance;
+use Notification;
+use App\Models\Log;
 use App\Models\User;
 use App\Models\Profil;
+use App\Models\Seance;
 use App\Models\Emprunt;
+use App\Models\Malheur;
 use App\Models\Versement;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Http\Request;
-use Notification;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -56,6 +57,12 @@ class HomeController extends Controller
             'type'=>"Aide mère",
             'user_id'=>$user->id
         ]);
+        $descLog = "Ajout du membre "+$request->nom+" "+$request->prenom;
+        $log = Log::create([
+            'type_log'=>2,
+            'log'=>$descLog,
+            'user_id'=>$user->id,
+         ]);
         return back()->with('Ajout reussi');
     }
 
@@ -63,6 +70,12 @@ class HomeController extends Controller
     public function delete_membre($id){
         $user=User::find($id);
         $user->delete();
+        $descLog = "Ajout du membre "+$user->nom+" "+$user->prenom;
+        $log = Log::create([
+            'type_log'=>0,
+            'log'=>$descLog,
+            'user_id'=>$user->id,
+         ]);
         return back()->with('suppression reussie');
     }
 
@@ -80,8 +93,14 @@ class HomeController extends Controller
         $user=Auth::id();
         $pere="aide père";
         $mere="aide mère";
+        $log = Log::create([
+            'type_log'=>2,
+            'log'=>"Signale un malheur",
+            'user_id'=>$user->id,
+        ]);
         if ($option1 == 'on' ) {
             $malheur=Malheur::where('user_id', $user)->where('type', $pere)->update(['statut' => 1]);
+           
             return back()->with('');
         }
         if ($option2 == 'on' ) {
@@ -105,7 +124,11 @@ class HomeController extends Controller
     $cotisations=Versement::join('users','users.id','=','versements.user_id')->select('versements.*','users.name')->where('seance_id', $id)->where('type', "Cotisation")->get();
     $epargnes=Versement::join('users','users.id','=','versements.user_id')->select('versements.*','users.name')->where('seance_id', $id)->where('type', "Epargne")->get();
     $emprunts=Emprunt::join('users','users.id','=','emprunts.user_id')->select('emprunts.*','users.name')->where('status', 1)->get();
-
+    $log = Log::create([
+        'type_log'=>2,
+        'log'=>"Consultation du rapport de seance",
+        'user_id'=>$user->id,
+    ]);
     $seances=Seance::where('id', $id);// dd($cotisations);
     return view('rapports.rapport_seance', ['cotisations'=>$cotisations, 'epargnes'=>$epargnes, 'emprunts'=>$emprunts, 'seances'=>$seances]);
   }

@@ -22,7 +22,10 @@
                 <p class="logo-text ms-2 d-none d-sm-block">Tontine</p>
             </div>
             @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
-                <div class="card-body col-12 col-md-9">
+                <div class="card-body col-12 col-md-12">
+                    <div class="row">
+                        <div class="offset-md-8 col-md-4"><a href="{{route('log')}}" class="btn btn-info">Consulter les logs</a></div>
+                    </div>
                     <div>
                         <label for="text-input" class=" form-control-label">Frequence de la reunion :</label>
                     </div>

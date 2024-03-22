@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Demande_emprunt;
-use App\Models\Notification;
-
+use App\Models\Log;
 use App\Models\Emprunt;
 
+use App\Models\Notification;
+
 use Illuminate\Http\Request;
+use App\Models\Demande_emprunt;
 use Illuminate\Support\Facades\Auth;
 
 class EmpruntController extends Controller
@@ -27,6 +28,12 @@ class EmpruntController extends Controller
             'description' => $descriptionNotif,
             'user_id' => Auth::user()->id,
         ]);
+        $descLog = "Effectue une demande d'emprunt de "+ $request->montant_emprunter;
+        $log = Log::create([
+            'type_log'=>2,
+            'log'=>$descLog,
+            'user_id'=>Auth::user()->id,
+         ]);
         // dd($descriptionNotif);
 
         return back()->with('Emprunt Demander.');
@@ -43,6 +50,12 @@ class EmpruntController extends Controller
         $demandeEmprunt=Demande_emprunt::find($id);
         $demandeEmprunt->status = 1;
         $demandeEmprunt->save();
+        $descLog = "Accepte l'emprut de "+$demandeEmprunt->montant;
+        $log = Log::create([
+            'type_log'=>2,
+            'log'=>$descLog,
+            'user_id'=>Auth::user()->id,
+         ]);
         return back()->with('Emprunt Enregistrer.');
     }
 
@@ -51,6 +64,12 @@ class EmpruntController extends Controller
         $demandeEmprunt=Demande_emprunt::find($id);
         $demandeEmprunt->status = 2;
         $demandeEmprunt->save();
+        $descLog = "Refuse un emprunt";
+        $log = Log::create([
+            'type_log'=>2,
+            'log'=>$descLog,
+            'user_id'=>$user->id,
+        ]);
         return back()->with('Emprunt Refuser.');
     }
 
