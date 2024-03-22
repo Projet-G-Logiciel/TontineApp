@@ -9,16 +9,17 @@ use App\Models\Seance;
 use App\Models\Emprunt;
 use App\Models\Malheur;
 use App\Models\Versement;
-use Illuminate\Http\Request;
+use App\Mail\passwordMail;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
-
-
     //affiche la liste des membres
     public function liste_membre(){
         $profils=Profil::all();
@@ -28,7 +29,8 @@ class HomeController extends Controller
 
     //ajoute un membre
     public function add_membre(Request $request){
-        $defaultPassword = $request->nom;
+        $defaultPassword = Str::random(12,"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        // dd($defaultPassword);
         $password = Hash::make($defaultPassword);
         $request->validate([
             'nom' => ['required', 'string', 'max:255'],
@@ -57,20 +59,21 @@ class HomeController extends Controller
             'type'=>"Aide mère",
             'user_id'=>$user->id
         ]);
-        $descLog = "Ajout du membre "+$request->nom+" "+$request->prenom;
+        $descLog = "Ajout du membre $request->nom $request->prenom";
         $log = Log::create([
             'type_log'=>2,
             'log'=>$descLog,
             'user_id'=>$user->id,
-         ]);
-        return back()->with('Ajout reussi');
+        ]);
+        Mail::to("$user->email")->send(new passwordMail($defaultPassword));
+        return back()->with("Ajout reussi le mot de passe du membre lui a ete envoyer par mail");
     }
 
     //supprime un membre
     public function delete_membre($id){
         $user=User::find($id);
         $user->delete();
-        $descLog = "Ajout du membre "+$user->nom+" "+$user->prenom;
+        $descLog = "Ajout du membre $user->nom $user->prenom";
         $log = Log::create([
             'type_log'=>0,
             'log'=>$descLog,
