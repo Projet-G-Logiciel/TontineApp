@@ -20,11 +20,38 @@ use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
+
+    
+//     public function listeProfil()
+//     {
+//         $profils=Profil::all();
+//         foreach ($profils as $value) {
+//             # code...
+//             $nombreMembre = User::where('users.profil_id',$value->id)->count();
+//         }
+//         $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
+//         return View('membres.liste_profiles', [
+//             'profils'=>$profils,
+//             'membres'=>$membres,
+//             'nombreMembre'=> $nombreMembre,
+//         ]);
+//     }
+
+//     public function home(){
+//         $profils=Profil::all();
+//         $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
+//         return view('dashboard', ['profils'=>$profils, 'membres'=>$membres]);
+//     }
+  
     //affiche la liste des membres
-    public function liste_membre(){
+    public function liste_membre($id_profile){
         $profils=Profil::all();
-        $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
-        return view('membres.liste_membre', ['profils'=>$profils, 'membres'=>$membres]);
+        $membres = User::join('profils','users.profil_id','=','profils.id')->where('users.profil_id',$id_profile)->get();
+        // dd($membres);
+        return view('membres.liste_membre', [
+            'profils'=>$profils, 
+            'membres'=>$membres,
+        ]);
     }
 
     //ajoute un membre
@@ -136,4 +163,26 @@ class HomeController extends Controller
     return view('rapports.rapport_seance', ['cotisations'=>$cotisations, 'epargnes'=>$epargnes, 'emprunts'=>$emprunts, 'seances'=>$seances]);
   }
 
+  //logs
+  //affiche la liste des membres
+  public function liste_log(){
+    $profils=Profil::all();
+    $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
+    return view('logs.liste_log', ['profils'=>$profils, 'membres'=>$membres]);
+    }
+
+    public function export_log(){
+        $profils=Profil::all();
+        $liste = [];
+        foreach ($profils as $profil) {
+            $liste[] = [$profil->id,$profil->nom_profil];
+        }
+        $contenu = "";
+        foreach ($liste as $ligne) {
+            $contenu .= implode(",", $ligne) . "\n";
+        }
+        file_put_contents("logs.txt", $contenu);
+
+        return response()->download("logs.txt");
+    }
 }

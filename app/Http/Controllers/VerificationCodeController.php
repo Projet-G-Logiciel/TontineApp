@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Log;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+
 
 class VerificationCodeController extends Controller
 {
@@ -31,6 +33,7 @@ class VerificationCodeController extends Controller
                 'log'=>"Connexion reussie",
                 'user_id'=>$user->id,
             ]);
+
             return Redirect::route('dashboard');
         }else{
             Auth::logout();

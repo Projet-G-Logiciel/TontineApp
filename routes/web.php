@@ -55,8 +55,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/refuserEmprunt-{id}', [EmpruntController::class, 'refuserEmprunt'])->name('crashEmprunt');
 
 });
+// Gestion des profils
+Route::get('/profil', [HomeController::class, 'listeProfil'])->name('profils');
+
+
 //gestion des membres
-Route::get('/member', [HomeController::class, 'liste_membre'])->name('membre');
+Route::get('/member-{id_profile}', [HomeController::class, 'liste_membre'])->name('membre');
 Route::post('/add_membre', [HomeController::class, 'add_membre'])->name('add');
 Route::get('/delete_membre/{id}', [HomeController::class, 'delete_membre'])->name('delete_membre');
 
@@ -67,6 +71,10 @@ Route::post('/signaler_malheur', [HomeController::class, 'update_malheur'])->nam
 //rapports
 Route::get('/rapports', [HomeController::class, 'rapports'])->name('rapports');
 Route::get('/rapport_seance/{id}', [HomeController::class, 'rapport_seance'])->name('rapport_seance');
+
+//Log
+Route::get('/log', [HomeController::class, 'liste_log'])->name('log');
+Route::get('/export', [HomeController::class, 'export_log'])->name('export_log');
 
 
 

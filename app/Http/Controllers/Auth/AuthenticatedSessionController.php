@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Models\Log;
 use App\Models\User;
 use App\Mail\codeMail;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -44,6 +46,7 @@ class AuthenticatedSessionController extends Controller
            'user_id'=>$user->id,
         ]);
         Mail::to($user->email)->send(new codeMail($code));
+
         Auth::logout();
         return redirect()->route('code',['id'=>$user->id]);
     }
