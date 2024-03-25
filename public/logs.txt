@@ -1,0 +1,7 @@
+junior,lk,Effectue une demande d'emprunt de  1500000,2024-03-23 12:55:16
+junior,lk,Connexion reussie,2024-03-23 12:49:28
+junior,lk,Demande d'authentification attente de verification du code,2024-03-23 12:48:50
+junior,lk,Demande d'authentification attente de verification du code,2024-03-23 12:46:53
+junior,lk,Demande d'authentification attente de verification du code,2024-03-23 12:41:19
+junior,lk,Demande d'authentification attente de verification du code,2024-03-23 12:36:16
+junior,lk,Demande d'authentification attente de verification du code,2024-03-23 11:20:08

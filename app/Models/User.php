@@ -3,8 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Emprunt;
+use App\Models\Log;
 use App\Models\Profil;
+use App\Models\Emprunt;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,7 @@ class User extends Authenticatable
         'surname',
         'email',
         'sex',
+        'number',
         'password',
         'profil_id',
     ];
@@ -54,7 +56,9 @@ class User extends Authenticatable
     function notifications(){
         return $this->hasMany(Notification::class);
     }
-
+    function log(){
+        return $this->hasMany(Log::class);
+    }
     public function profil()
     {
         return $this->belongsTo(Profil::class);

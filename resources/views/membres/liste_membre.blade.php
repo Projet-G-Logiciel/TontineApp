@@ -26,7 +26,7 @@
             </div>
             <div class="col-auto">
               <div class="d-flex align-items-center">
-                <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
+                <a href="{{ route('export_log') }}"><button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button></a>
                 {{-- voici le bout de code qui gere l'accés --}}
                 @if(Auth::user()->profil->nom_profil == 'President' || Auth::user()->profil->nom_profil == 'Secretaire')
                   <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Add membre</button>

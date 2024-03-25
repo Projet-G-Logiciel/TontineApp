@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
- 
-@section('content')
-        
 
-        
+@section('content')
+
+
+
 <div class="content">
   <nav class="mb-2" aria-label="breadcrumb">
     <ol class="breadcrumb mb-0">
@@ -25,9 +25,9 @@
       <div class="col-auto">
         <div class="d-flex align-items-center">
           <button class="btn btn-link text-900 me-4 px-0"><span class="fa-solid fa-file-export fs--1 me-2"></span>Export</button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">Rembouser l'emprunt en cours</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#remboursement">Rembouser l'emprunt en cours</button>
         </div>
-        {{-- @include('membres.add_member-modal') --}}
+        @include('modal-remboursement')
       </div>
     </div>
     <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-white border-y border-300 mt-2 position-relative top-1">

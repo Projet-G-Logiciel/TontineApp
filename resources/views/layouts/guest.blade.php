@@ -13,7 +13,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/icons/logo.ico') }}">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/icons/logo.ico') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/icons/logo.ico') }}">
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <!-- Scripts -->
 
     </head>
