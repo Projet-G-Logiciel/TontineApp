@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Log;
 use App\Models\User;
-use App\Models\Profil;
 use App\Models\Versement;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-
-use Illuminate\Support\Facades\Auth;
+use App\Models\Profil;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Http\Request;
 
 
 class VersementController extends Controller
@@ -28,12 +27,7 @@ class VersementController extends Controller
             'user_id'=>Auth::user()->id,
             'seance_id'=>$request->id_seance,
         ]);
-        $descLog = "Versement d'une cotisation de $request->montant_cotisation";
-        $log = Log::create([
-            'type_log'=>0,
-            'log'=>$descLog,
-            'user_id'=>$user->id,
-        ]);
+        
         
         return back()->with('Ajout reussi');
     }
@@ -52,12 +46,6 @@ class VersementController extends Controller
             'seance_id'=>$request->id_seance,
 
         ]);
-        $descLog = "Versement d'une epargne de $request->montant_epargne";
-        $log = Log::create([
-            'type_log'=>2,
-            'log'=>$descLog,
-            'user_id'=>Auth::user()->id,
-         ]);
 
         return back()->with('Ajout reussi');
     }
