@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
 
-<<<<<<< Updated upstream
-=======
     
     public function listeProfil()
     {
@@ -38,7 +36,6 @@ class HomeController extends Controller
             'nombreMembre'=> $nombreMembre,
         ]);
     }
->>>>>>> Stashed changes
 
 //     public function home(){
 //         $profils=Profil::all();
