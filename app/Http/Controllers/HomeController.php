@@ -44,10 +44,14 @@ class HomeController extends Controller
 //     }
   
     //affiche la liste des membres
-    public function liste_membre(){
+    public function liste_membre($id_profile){
         $profils=Profil::all();
-        $membres = Profil::join('users','profils.id','=','users.profil_id')->get();
-        return view('membres.liste_membre', ['profils'=>$profils, 'membres'=>$membres]);
+        $membres = User::join('profils','users.profil_id','=','profils.id')->where('users.profil_id',$id_profile)->get();
+        // dd($membres);
+        return view('membres.liste_membre', [
+            'profils'=>$profils, 
+            'membres'=>$membres,
+        ]);
     }
 
     //ajoute un membre

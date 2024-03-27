@@ -1,4 +1,4 @@
-<div class="modal fade" id="verticallyCentered" tabindex="-1" aria-labelledby="verticallyCenteredModalLabel" aria-hidden="true">
+<div class="modal fade" id="member" tabindex="-1" aria-labelledby="verticallyCenteredModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,7 @@
           <form action="{{ route('add') }}" method="post">
               @csrf
               <div class="mb-3">
-                <label class="form-label" for="basic-form-name">Nom</label>
+                <label class="form-label" for="basic-form-name">Name</label>
                 <input class="form-control" id="basic-form-name" type="text" name="nom">
               </div>
               <div class="mb-3">
@@ -24,11 +24,7 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label class="form-label" for="basic-form-name">telephone</label>
-                <input class="form-control" id="basic-form-name" type="number" name="number">
-            </div>
-              <div class="mb-3">
-                <label class="form-label" for="basic-form-email">Addresse Email</label>
+                <label class="form-label" for="basic-form-email">Email address</label>
                 <input class="form-control" id="basic-form-email" type="email" name="email">
               </div>
               <div class="mb-3">
